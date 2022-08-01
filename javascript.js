@@ -1,5 +1,13 @@
 let playerCards = [];
 let computerCards = [];
+let pot = 0;
+let playerTotal = 0;
+let computerTotal = 0;
+
+function placeBet() {
+    pot = prompt("How much would you like to bet? $");
+    pot = Number(pot) * 2; 
+}
 
 function dealCards() {
 
@@ -22,8 +30,6 @@ function dealCards() {
             computerCards[1] = {value: number, suite: suite};
         }
     }
-    //console.log(playerCards[0].value);
-    //console.log(playerCards[1]);
 
     let hit = prompt("Do you want to hit? Y/N: ");
     let j = 2;
@@ -74,4 +80,50 @@ function dealCards() {
     }
 
 }
+
+function checkWinner(player, computer) {
+    const ace = (card) => card.value == 1;
+    if (!playerCards.some(ace)) {
+        for (n = 0; n < playerCards.length; n++) {
+            playerTotal = playerTotal + playerCards[n].value;
+        }
+    } else {
+        for (n = 0; n < playerCards.length; n++) {
+            playerTotal = playerTotal + playerCards[n].value;
+        }
+        let highTotal = (playerTotal - 1) + 11;
+        if (hightTotal <= 21) {
+            playerTotal = highTotal
+        } 
+    }
+    if (!computerCards.some(ace)) {
+        for (n = 0; n < computerCards.length; n++) {
+            computerTotal = computerTotal + computerCards[n].value;
+        }
+    } else {
+        for (n = 0; n < computerCards.length; n++) {
+            computerTotal = computerTotal + computerCards[n].value;
+        }
+        let highTotal = (computerTotal - 1) + 11;
+        if (highTotal <= 21) {
+            computerTotal = highTotal
+        } 
+    }
+    
+    if (computerTotal = playerTotal) {
+        return "It is a tie.";
+    } else if (computerTotal > 21 && playerTotal > 21) {
+        return "It is a tie.";
+    } else if (playerTotal <= 21 && computerTotal > 21) {
+        return "You win!";
+    } else if (playerTotal > 21 && computerTotal <= 21) {
+        return "You lose.";
+    } else if (playerTotal <= 21 && computerTotal <= 21 && playerTotal > computerTotal) {
+        return "You win!";
+    } else {
+        return "You lose.";
+    }
+}
+
 dealCards();
+checkWinner(playerCards, computerCards);
