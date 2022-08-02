@@ -1,4 +1,4 @@
-// 1=diamond, 2=heart, 3=spade, 4=clover
+
 const pot = document.getElementById('pot');
 const hit = document.getElementById('hit');
 const stay = document.getElementById('stay');
@@ -24,11 +24,31 @@ let j = 2;
 hit.addEventListener('click', function hitPlayer () {
     let number = Math.floor((Math.random() * 10) + 1);
     let suite = Math.floor((Math.random() * 4) + 1);
+    let symbol = '';
+    if (suite == 1) {
+        symbol = "\u2660";
+    } else if (suite == 2) {
+        symbol = "\u2665";
+    } else if (suite == 3) {
+        symbol = "\u2666";
+    } else {
+        symbol = "\u2663";
+    }
     if (number == 1) {
-        playerCards[j] = {value: number, suite: suite, face: "ace"};
+        playerCards[j] = {value: number, suite: suite, face: "A"};
     } else if (number == 10) {
         let face = Math.floor((Math.random() * 4) + 1);
-        playerCards[j] = {value: number, suite: suite, face: face};
+        let faceSymbol = "";
+        if (face == 1) {
+            faceSymbol = "K";
+        } else if (face == 2) {
+            faceSymbol = "Q";
+        } else if (face == 3) {
+            faceSymbol = "J";
+        } else {
+            faceSymbol = "10";
+        }
+        playerCards[j] = {value: number, suite: suite, face: faceSymbol};
     } else {
         playerCards[j] = {value: number, suite: suite};
     }
@@ -37,6 +57,11 @@ hit.addEventListener('click', function hitPlayer () {
     newDiv.setAttribute('id', `pCard${j + 1}`);
     newDiv.setAttribute('style', 'background: white; height: 200px; width: 150px;');
     bottomCards.appendChild(newDiv);
+    if (playerCards[j].value == 10 || playerCards[j].value == 1) {
+        newDiv.innerHTML = `${playerCards[j].face}` + symbol;
+    } else {
+        newDiv.innerHTML = `${playerCards[j].value}` + symbol;
+    }
     ++j;
 });
 
@@ -47,11 +72,30 @@ stay.addEventListener('click', function computerPlay () {
         if (computerCards[0].value == 1 && computerCards[1].value == 1) {
             let number = Math.floor((Math.random() * 10) + 1);
             let suite = Math.floor((Math.random() * 4) + 1);
+            let symbol = '';
+            if (suite == 1) {
+                symbol = "\u2660";
+            } else if (suite == 2) {
+                symbol = "\u2665";
+            } else if (suite == 3) {
+                symbol = "\u2666";
+            } else {
+                symbol = "\u2663";
+            }
             if (number == 1) {
-                computerCards[k] = {value: number, suite: suite, face: "ace"};
+                computerCards[k] = {value: number, suite: suite, face: "A"};
             } else if (number == 10) {
                 let face = Math.floor((Math.random() * 4) + 1);
-                computerCards[k] = {value: number, suite: suite, face: face};
+                if (face == 1) {
+                    faceSymbol = "K";
+                } else if (face == 2) {
+                    faceSymbol = "Q";
+                } else if (face == 3) {
+                    faceSymbol = "J";
+                } else {
+                    faceSymbol = "10";
+                }
+                computerCards[k] = {value: number, suite: suite, face: faceSymbol};
             } else {
                 computerCards[k] = {value: number, suite: suite};
             }
@@ -61,16 +105,40 @@ stay.addEventListener('click', function computerPlay () {
             newDiv.setAttribute('id', `cCard${k + 1}`);
             newDiv.setAttribute('style', 'background: white; height: 200px; width: 150px;');
             topCards.appendChild(newDiv);
+            if (computerCards[k].value == 10 || computerCards[k].value == 1) {
+                newDiv.innerHTML = `${computerCards[k].face}` + symbol;
+            } else {
+                newDiv.innerHTML = `${computerCards[k].value}` + symbol;
+            }
             ++k;
         } else if (computerCards[0].value == 1) {
             if (computerCards[1].value + 1 < 17 && computerCards[1].value + 11 < 17) {
                 let number = Math.floor((Math.random() * 10) + 1);
                 let suite = Math.floor((Math.random() * 4) + 1);
+                let symbol = '';
+                if (suite == 1) {
+                    symbol = "\u2660";
+                } else if (suite == 2) {
+                    symbol = "\u2665";
+                } else if (suite == 3) {
+                    symbol = "\u2666";
+                } else {
+                    symbol = "\u2663";
+                }
                 if (number == 1) {
-                    computerCards[k] = {value: number, suite: suite, face: "ace"};
+                    computerCards[k] = {value: number, suite: suite, face: "A"};
                 } else if (number == 10) {
                     let face = Math.floor((Math.random() * 4) + 1);
-                    computerCards[k] = {value: number, suite: suite, face: face};
+                    if (face == 1) {
+                        faceSymbol = "K";
+                    } else if (face == 2) {
+                        faceSymbol = "Q";
+                    } else if (face == 3) {
+                        faceSymbol = "J";
+                    } else {
+                        faceSymbol = "10";
+                    }
+                    computerCards[k] = {value: number, suite: suite, face: faceSymbol};
                 } else {
                     computerCards[k] = {value: number, suite: suite};
                 }
@@ -80,6 +148,11 @@ stay.addEventListener('click', function computerPlay () {
                 newDiv.setAttribute('id', `cCard${k + 1}`);
                 newDiv.setAttribute('style', 'background: white; height: 200px; width: 150px;');
                 topCards.appendChild(newDiv);
+                if (computerCards[k].value == 10 || computerCards[k].value == 1) {
+                    newDiv.innerHTML = `${computerCards[k].face}` + symbol;
+                } else {
+                    newDiv.innerHTML = `${computerCards[k].value}` + symbol;
+                }
                 ++k;
             } else {
                 break;
@@ -88,11 +161,30 @@ stay.addEventListener('click', function computerPlay () {
             if (computerCards[0].value + 1 < 17 && computerCards[0].value + 11 < 17) {
                 let number = Math.floor((Math.random() * 10) + 1);
                 let suite = Math.floor((Math.random() * 4) + 1);
+                let symbol = '';
+                if (suite == 1) {
+                    symbol = "\u2660";
+                } else if (suite == 2) {
+                    symbol = "\u2665";
+                } else if (suite == 3) {
+                    symbol = "\u2666";
+                } else {
+                    symbol = "\u2663";
+                }
                 if (number == 1) {
-                    computerCards[k] = {value: number, suite: suite, face: "ace"};
+                    computerCards[k] = {value: number, suite: suite, face: "A"};
                 } else if (number == 10) {
                     let face = Math.floor((Math.random() * 4) + 1);
-                    computerCards[k] = {value: number, suite: suite, face: face};
+                    if (face == 1) {
+                        faceSymbol = "K";
+                    } else if (face == 2) {
+                        faceSymbol = "Q";
+                    } else if (face == 3) {
+                        faceSymbol = "J";
+                    } else {
+                        faceSymbol = "10";
+                    }
+                    computerCards[k] = {value: number, suite: suite, face: faceSymbol};
                 } else {
                     computerCards[k] = {value: number, suite: suite};
                 }
@@ -102,6 +194,11 @@ stay.addEventListener('click', function computerPlay () {
                 newDiv.setAttribute('id', `cCard${k + 1}`);
                 newDiv.setAttribute('style', 'background: white; height: 200px; width: 150px;');
                 topCards.appendChild(newDiv);
+                if (computerCards[k].value == 10 || computerCards[k].value == 1) {
+                    newDiv.innerHTML = `${computerCards[k].face}` + symbol;
+                } else {
+                    newDiv.innerHTML = `${computerCards[k].value}` + symbol;
+                }
                 ++k;
             } else {
                 break;
@@ -109,11 +206,30 @@ stay.addEventListener('click', function computerPlay () {
         } else {
             let number = Math.floor((Math.random() * 10) + 1);
             let suite = Math.floor((Math.random() * 4) + 1);
+            let symbol = '';
+            if (suite == 1) {
+                symbol = "\u2660";
+            } else if (suite == 2) {
+                symbol = "\u2665";
+            } else if (suite == 3) {
+                symbol = "\u2666";
+            } else {
+                symbol = "\u2663";
+            }
             if (number == 1) {
-                computerCards[k] = {value: number, suite: suite, face: "ace"};
+                computerCards[k] = {value: number, suite: suite, face: "A"};
             } else if (number == 10) {
                 let face = Math.floor((Math.random() * 4) + 1);
-                computerCards[k] = {value: number, suite: suite, face: face};
+                if (face == 1) {
+                    faceSymbol = "K";
+                } else if (face == 2) {
+                    faceSymbol = "Q";
+                } else if (face == 3) {
+                    faceSymbol = "J";
+                } else {
+                    faceSymbol = "10";
+                }
+                computerCards[k] = {value: number, suite: suite, face: faceSymbol};
             } else {
                 computerCards[k] = {value: number, suite: suite};
             }
@@ -123,6 +239,11 @@ stay.addEventListener('click', function computerPlay () {
             newDiv.setAttribute('id', `cCard${k + 1}`);
             newDiv.setAttribute('style', 'background: white; height: 200px; width: 150px;');
             topCards.appendChild(newDiv);
+            if (computerCards[k].value == 10 || computerCards[k].value == 1) {
+                newDiv.innerHTML = `${computerCards[k].face}` + symbol;
+            } else {
+                newDiv.innerHTML = `${computerCards[k].value}` + symbol;
+            }
             ++k;
         }
     }
@@ -134,49 +255,157 @@ function dealCards() {
         if (i == 0) {
             let number = Math.floor((Math.random() * 10) + 1);
             let suite = Math.floor((Math.random() * 4) + 1);
+            let symbol = '';
+            if (suite == 1) {
+                symbol = "\u2660";
+            } else if (suite == 2) {
+                symbol = "\u2665";
+            } else if (suite == 3) {
+                symbol = "\u2666";
+            } else {
+                symbol = "\u2663";
+            }
             if (number == 1) {
-                playerCards[0] = {value: number, suite: suite, face: "ace"};
+                playerCards[0] = {value: number, suite: suite, face: "A"};
             } else if (number == 10) {
                 let face = Math.floor((Math.random() * 4) + 1);
-                playerCards[0] = {value: number, suite: suite, face: face};
+                let faceSymbol = "";
+                if (face == 1) {
+                    faceSymbol = "K";
+                } else if (face == 2) {
+                    faceSymbol = "Q";
+                } else if (face == 3) {
+                    faceSymbol = "J";
+                } else {
+                    faceSymbol = "10";
+                }
+                playerCards[0] = {value: number, suite: suite, face: faceSymbol};
             } else {
                 playerCards[0] = {value: number, suite: suite};
+            }
+            const pCard1 = document.getElementById('pCard1');
+            if (playerCards[0].value == 10 || playerCards[0].value == 1) {
+                pCard1.innerHTML = `${playerCards[0].face}` + symbol;
+            } else {
+                pCard1.innerHTML = `${playerCards[0].value}` + symbol;
             }
         } else if (i == 1) {
             let number = Math.floor((Math.random() * 10) + 1);
             let suite = Math.floor((Math.random() * 4) + 1);
+            let symbol = '';
+            if (suite == 1) {
+                symbol = "\u2660";
+            } else if (suite == 2) {
+                symbol = "\u2665";
+            } else if (suite == 3) {
+                symbol = "\u2666";
+            } else {
+                symbol = "\u2663";
+            }
             if (number == 1) {
-                computerCards[0] = {value: number, suite: suite, face: "ace"};
+                computerCards[0] = {value: number, suite: suite, face: "A"};
             } else if (number == 10) {
                 let face = Math.floor((Math.random() * 4) + 1);
-                computerCards[0] = {value: number, suite: suite, face: face};
+                let faceSymbol = "";
+                if (face == 1) {
+                    faceSymbol = "K";
+                } else if (face == 2) {
+                    faceSymbol = "Q";
+                } else if (face == 3) {
+                    faceSymbol = "J";
+                } else {
+                    faceSymbol = "10";
+                }
+                computerCards[0] = {value: number, suite: suite, face: faceSymbol};
             } else {
                 computerCards[0] = {value: number, suite: suite};
+            }
+            const cCard1 = document.getElementById('cCard1');
+            if (computerCards[0].value == 10 || computerCards[0].value == 1) {
+                cCard1.innerHTML = `${computerCards[0].face}` + symbol;
+            } else {
+                cCard1.innerHTML = `${computerCards[0].value}` + symbol;
             }
         } else if (i == 2) {
             let number = Math.floor((Math.random() * 10) + 1);
             let suite = Math.floor((Math.random() * 4) + 1);
+            let symbol = '';
+            if (suite == 1) {
+                symbol = "\u2660";
+            } else if (suite == 2) {
+                symbol = "\u2665";
+            } else if (suite == 3) {
+                symbol = "\u2666";
+            } else {
+                symbol = "\u2663";
+            }
             if (number == 1) {
-                playerCards[1] = {value: number, suite: suite, face: "ace"};
+                playerCards[1] = {value: number, suite: suite, face: "A"};
             } else if (number == 10) {
                 let face = Math.floor((Math.random() * 4) + 1);
-                playerCards[1] = {value: number, suite: suite, face: face};
+                let faceSymbol = "";
+                if (face == 1) {
+                    faceSymbol = "K";
+                } else if (face == 2) {
+                    faceSymbol = "Q";
+                } else if (face == 3) {
+                    faceSymbol = "J";
+                } else {
+                    faceSymbol = "10";
+                }
+                playerCards[1] = {value: number, suite: suite, face: faceSymbol};
             } else {
                 playerCards[1] = {value: number, suite: suite};
+            }
+            const pCard2 = document.getElementById('pCard2');
+            if (playerCards[1].value == 10 || playerCards[1].value == 1) {
+                pCard2.innerHTML = `${playerCards[1].face}` + symbol;
+            } else {
+                pCard2.innerHTML = `${playerCards[1].value}` + symbol;
             }
         } else {
             let number = Math.floor((Math.random() * 10) + 1);
             let suite = Math.floor((Math.random() * 4) + 1);
+            let symbol = '';
+            if (suite == 1) {
+                symbol = "\u2660";
+            } else if (suite == 2) {
+                symbol = "\u2665";
+            } else if (suite == 3) {
+                symbol = "\u2666";
+            } else {
+                symbol = "\u2663";
+            }
             if (number == 1) {
-                computerCards[1] = {value: number, suite: suite, face: "ace"};
+                computerCards[1] = {value: number, suite: suite, face: "A"};
             } else if (number == 10) {
                 let face = Math.floor((Math.random() * 4) + 1);
-                computerCards[1] = {value: number, suite: suite, face: face};
+                let faceSymbol = "";
+                if (face == 1) {
+                    faceSymbol = "K";
+                } else if (face == 2) {
+                    faceSymbol = "Q";
+                } else if (face == 3) {
+                    faceSymbol = "J";
+                } else {
+                    faceSymbol = "10";
+                }
+                computerCards[1] = {value: number, suite: suite, face: faceSymbol};
             } else {
                 computerCards[1] = {value: number, suite: suite};
             }
+            const cCard2 = document.getElementById('cCard2');
+            if (computerCards[1].value == 10 || computerCards[1].value == 1) {
+                cCard2.innerHTML = `${computerCards[1].face}` + symbol;
+            } else {
+                cCard2.innerHTML = `${computerCards[1].value}` + symbol;
+            }
         }
     }
+    console.log(playerCards[0]);
+    console.log(playerCards[1]);
+    console.log(computerCards[0]);
+    console.log(computerCards[1]);
 }
 
 function checkWinner(player, computer) {
@@ -194,6 +423,7 @@ function checkWinner(player, computer) {
             playerTotal = highTotal
         } 
     }
+    console.log(playerTotal);
     if (!computerCards.some(ace)) {
         for (n = 0; n < computerCards.length; n++) {
             computerTotal = computerTotal + computerCards[n].value;
@@ -207,7 +437,8 @@ function checkWinner(player, computer) {
             computerTotal = highTotal
         } 
     }
-    if (computerTotal = playerTotal) {
+    console.log(computerTotal);
+    if (computerTotal == playerTotal) {
         return "It is a tie.";
     } else if (computerTotal > 21 && playerTotal > 21) {
         return "It is a tie.";
