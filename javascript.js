@@ -35,6 +35,7 @@ hit.addEventListener('click', function hitPlayer () {
     const newDiv = document.createElement("div");
     newDiv.className = "displayCards";
     newDiv.setAttribute('id', `pCard${j + 1}`);
+    newDiv.setAttribute('style', 'background: white; height: 200px; width: 150px;');
     bottomCards.appendChild(newDiv);
     ++j;
 });
@@ -55,6 +56,11 @@ stay.addEventListener('click', function computerPlay () {
                 computerCards[k] = {value: number, suite: suite};
             }
             computerSum = computerSum + computerCards[k].value;
+            const newDiv = document.createElement("div");
+            newDiv.className = "displayCards";
+            newDiv.setAttribute('id', `cCard${k + 1}`);
+            newDiv.setAttribute('style', 'background: white; height: 200px; width: 150px;');
+            topCards.appendChild(newDiv);
             ++k;
         } else if (computerCards[0].value == 1) {
             if (computerCards[1].value + 1 < 17 && computerCards[1].value + 11 < 17) {
@@ -69,6 +75,11 @@ stay.addEventListener('click', function computerPlay () {
                     computerCards[k] = {value: number, suite: suite};
                 }
                 computerSum = computerSum + computerCards[k].value;
+                const newDiv = document.createElement("div");
+                newDiv.className = "displayCards";
+                newDiv.setAttribute('id', `cCard${k + 1}`);
+                newDiv.setAttribute('style', 'background: white; height: 200px; width: 150px;');
+                topCards.appendChild(newDiv);
                 ++k;
             } else {
                 break;
@@ -86,6 +97,11 @@ stay.addEventListener('click', function computerPlay () {
                     computerCards[k] = {value: number, suite: suite};
                 }
                 computerSum = computerSum + computerCards[k].value;
+                const newDiv = document.createElement("div");
+                newDiv.className = "displayCards";
+                newDiv.setAttribute('id', `cCard${k + 1}`);
+                newDiv.setAttribute('style', 'background: white; height: 200px; width: 150px;');
+                topCards.appendChild(newDiv);
                 ++k;
             } else {
                 break;
@@ -102,6 +118,11 @@ stay.addEventListener('click', function computerPlay () {
                 computerCards[k] = {value: number, suite: suite};
             }
             computerSum = computerSum + computerCards[k].value;
+            const newDiv = document.createElement("div");
+            newDiv.className = "displayCards";
+            newDiv.setAttribute('id', `cCard${k + 1}`);
+            newDiv.setAttribute('style', 'background: white; height: 200px; width: 150px;');
+            topCards.appendChild(newDiv);
             ++k;
         }
     }
