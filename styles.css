@@ -1,0 +1,57 @@
+
+body {
+    background-color: forestgreen;
+}
+
+#container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#topCards {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex: 1 1 auto;
+}
+
+#middle {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#bottomCards {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex: 1 1 auto;
+}
+
+button {
+    font-size: 24px;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100px;
+    height: auto;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.displayCards {
+    background-color: white;
+    height: 200px;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    font-size: 36px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+form {
+    font-size: 20px;
+}
