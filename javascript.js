@@ -18,6 +18,10 @@ let computerSum = 0;
 let playerWinnings = 0;
 let computerWinnings = 0;
 
+hit.disabled = true;
+stay.disabled = true;
+play.disabled = true;
+
 function buildDeck() {
     let values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
     let suits = ["\u2660", "\u2665", "\u2666", "\u2663"];
@@ -135,6 +139,7 @@ stay.addEventListener('click', function computerPlay () {
     console.log(playerCards);
     console.log(computerCards);
     checkWinner(playerCards, computerCards);
+    play.disabled = false;
 })
 
 play.addEventListener('click', function newRound () {
@@ -153,6 +158,7 @@ play.addEventListener('click', function newRound () {
     potDisplay.innerHTML = `The pot is $${potTotal}`;
     form.style.display = "";
     pot.disabled = false;
+    play.disabled = true;
 });
 
 function dealCards() {
