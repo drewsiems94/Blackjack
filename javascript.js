@@ -229,23 +229,29 @@ function checkWinner(player, computer) {
         computerWinnings = computerWinnings + (potTotal / 2);
         pEarnings.textContent = `Your earnings: $${playerWinnings}`;
         cEarnings.textContent = `Computer earnings: $${computerWinnings}`;
+        potDisplay.innerHTML = `It is a tie.`;
     } else if (computerTotal > 21 && playerTotal > 21) {
         playerWinnings = playerWinnings + (potTotal / 2);
         computerWinnings = computerWinnings + (potTotal / 2);
         pEarnings.textContent = `Your earnings: $${playerWinnings}`;
         cEarnings.textContent = `Computer earnings: $${computerWinnings}`;
+        potDisplay.innerHTML = `It is a tie.`;
     } else if (playerTotal <= 21 && computerTotal > 21) {
         playerWinnings = potTotal + playerWinnings;
         pEarnings.textContent = `Your earnings: $${playerWinnings}`;
+        potDisplay.innerHTML = `You win!`;
     } else if (playerTotal > 21 && computerTotal <= 21) {
         computerWinnings = computerWinnings + potTotal;
         cEarnings.textContent = `Computer earnings: $${computerWinnings}`;
+        potDisplay.innerHTML = `You lose.`;
     } else if (playerTotal <= 21 && computerTotal <= 21 && playerTotal > computerTotal) {
         playerWinnings = potTotal + playerWinnings;
         pEarnings.textContent = `Your earnings: $${playerWinnings}`;
+        potDisplay.innerHTML = `You win!`;
     } else {
         computerWinnings = computerWinnings + potTotal;
         cEarnings.textContent = `Computer earnings: $${computerWinnings}`;
+        potDisplay.innerHTML = `You lose.`;
     }
 }
 
