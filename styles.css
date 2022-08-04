@@ -62,11 +62,19 @@ button {
 
 form {
     font-size: 20px;
+    margin: 15px;
 }
 
-#cEarnings,
 #pEarnings {
     text-align: center;
     color: white;
     font-size: 20px;
+    margin-bottom: 10px;
+}
+#play {
+    margin: 15px;
+}
+
+#potDisplay {
+    margin: 15px;
 }
