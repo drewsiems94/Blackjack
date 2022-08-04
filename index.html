@@ -10,22 +10,22 @@
 <body>
     
     <div id="container">
-        <div id="topCards" class="cards">
-            <div id="cCard1" class="displayCards"></div>
-            <div id="cCard2" class="displayCards"></div>
-        </div>
+        <header id="cEarnings">Computer earnings: $0</header>
+        <div id="topCards" class="cards"></div>
         <div id="middle">
             <button id="hit">HIT</button>
-            <form>
-                <label for="bet">Place your bet: </label>
-                <input type="text" name="bet" id="pot">
-            </form>
+            <div id="potMiddle">
+                <div id="potDisplay">The pot is $0</div>
+                <form>
+                    <label for="bet">Place your bet: </label>
+                    <input type="text" name="bet" id="pot">
+                </form>
+                <button id="play">PLAY AGAIN</button>
+            </div>
             <button id="stay">STAY</button>
         </div>
-        <div id="bottomCards" class="cards">
-            <div id="pCard1" class="displayCards"></div>
-            <div id="pCard2" class="displayCards"></div>
-        </div>
+        <div id="bottomCards" class="cards"></div>
+        <footer id="pEarnings">Your earnings: $0</footer>
     </div>
     <script src="javascript.js"></script>
 
